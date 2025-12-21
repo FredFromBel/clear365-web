@@ -1,0 +1,10 @@
+{
+  "routes": [],
+  "platformErrorOverrides": [
+    {
+      "errorType": "NotFound",
+      "response": "/index.html",
+      "statusCode": 200
+    }
+  ]
+}
