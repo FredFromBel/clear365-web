@@ -2,54 +2,13 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
-
-jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    name: Build and Deploy Job
-    permissions:
-      contents: read
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
-
-      - name: Build And Deploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_CALM_WATER_04FF19B03 }}
-          action: "upload"
-          app_location: "/"          # index.html est à la racine du repo
-          api_location: ""           # pas d'API
-          output_location: ""        # pas de dossier de build
-          skip_app_build: true       # empêche Oryx (Node build)
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          name: Azure Static Web Apps CI/CD
-
-on:
-  push:
     branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -58,10 +17,7 @@ jobs:
         with:
           action: upload
           app_location: /
-          output_location: ""
           api_location: ""
+          output_location: ""
           skip_app_build: true
           skip_api_build: true
-          action: "close"
-
-
