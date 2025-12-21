@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLEAR365 — En construction</title>
+  <meta name="description" content="CLEAR365 — Audit, sécurisation et productivité Microsoft 365. Site en construction." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --text:#e5e7eb;
+      --muted:#a8b3c7;
+      --line:rgba(255,255,255,.10);
+      --accent:#3b82f6;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Segoe UI, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(59,130,246,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 60%, rgba(147,197,253,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(920px, 100%);
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+    }
+    @media (max-width: 860px){
+      .wrap{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      backdrop-filter: blur(6px);
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      margin-bottom:14px;
+    }
+    .logo{
+      width:64px; height:64px;
+      border-radius:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:contain}
+    h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing:.2px;
+      line-height:1.2;
+    }
+    .subtitle{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+    .pillrow{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .pill{
+      font-size:12px;
+      color:var(--text);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      padding:7px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .hr{height:1px; background:var(--line); margin:16px 0}
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      color:var(--text);
+      background:rgba(255,255,255,.03);
+      font-size:13px;
+    }
+    a.btn.primary{
+      border-color:rgba(59,130,246,.55);
+      background:rgba(59,130,246,.18);
+    }
+    .small{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .kpi{
+      display:grid;
+      gap:10px;
+    }
+    .k{
+      padding:12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .k .t{font-size:12px; color:var(--muted)}
+    .k .v{margin-top:6px; font-size:14px; font-weight:600}
+    .footer{
+      margin-top:10px;
+      font-size:11px;
+      color:rgba(255,255,255,.55);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <!-- Bloc principal -->
+    <section class="card">
+      <div class="brand">
+        <div class="logo" aria-label="Logo CLEAR365">
+          <img src="https://stclr365appbec001.blob.core.windows.net/public/logo.png" alt="CLEAR365">
+        </div>
+        <div>
+          <h1>CLEAR365 — Site en construction</h1>
+          <div class="subtitle">
+            Audit, sécurisation et productivité Microsoft 365 pour PME.<br>
+            Nous préparons une plateforme claire et actionnable. En attendant, contactez-nous directement.
+          </div>
+        </div>
+      </div>
+
+      <div class="pillrow">
+        <div class="pill">Microsoft 365</div>
+        <div class="pill">Sécurité des identités & accès</div>
+        <div class="pill">Intune</div>
+        <div class="pill">Audit & recommandations</div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="small">
+        <strong>Prise de contact rapide :</strong> vous décrivez votre besoin (10 lignes), je vous réponds avec un premier cadrage
+        (risques, quick wins, prochaine étape).
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Audit%20Microsoft%20365">Envoyer un e-mail</a>
+        <a class="btn" href="tel:+32470069790">Appeler : +32 470 069 790</a>
+      </div>
+
+      <div class="footer">
+        © <span id="y"></span> CLEAR365 — Namur, Belgique
+      </div>
+    </section>
+
+    <!-- Bloc latéral -->
+    <aside class="card">
+      <div class="kpi">
+        <div class="k">
+          <div class="t">Positionnement</div>
+          <div class="v">Consultant Microsoft 365 & Sécurité Cloud</div>
+        </div>
+        <div class="k">
+          <div class="t">Ce que vous obtenez</div>
+          <div class="v">Diagnostic + plan d’actions priorisé (quick wins & risques)</div>
+        </div>
+        <div class="k">
+          <div class="t">Zone</div>
+          <div class="v">Belgique — Namur et alentours / Remote</div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="small">
+        <strong>Prochainement :</strong><br>
+        • Page services (Audit, Sécurisation, Productivité)<br>
+        • Packs PME (démarrage rapide)<br>
+        • Réservation de créneaux & checklists
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
