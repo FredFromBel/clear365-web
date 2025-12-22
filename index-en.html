@@ -1,262 +1,351 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CLEAR365 — En construction</title>
-  <meta name="description" content="CLEAR365 — Audit, sécurisation et productivité Microsoft 365. Site en construction." />
+  <title>CLEAR365 — Website under construction</title>
+  <meta name="description" content="CLEAR365 — Microsoft 365 audit, security and productivity for SMEs. Website under construction." />
   <meta name="robots" content="noindex,nofollow" />
 
   <style>
-    :root{
-      --bg:#0b1220;
-      --card:#0f1b33;
-      --text:#e5e7eb;
-      --muted:#a8b3c7;
-      --line:rgba(255,255,255,.10);
-      --accent:#3b82f6;
+    :root {
+      --bg: #0b1220;
+      --card: #0f1b33;
+      --text: #e5e7eb;
+      --muted: #a8b3c7;
+      --line: rgba(255,255,255,.10);
+      --accent: #3b82f6;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Segoe UI, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(59,130,246,.18), transparent 60%),
-                  radial-gradient(900px 600px at 80% 60%, rgba(147,197,253,.12), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+
+    * {
+      box-sizing: border-box;
     }
-    .wrap{
-      width:min(920px, 100%);
-      display:grid;
+
+    body {
+      margin: 0;
+      font-family: Segoe UI, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(900px 600px at 80% 60%, rgba(147,197,253,.12), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* ===== Language switch ===== */
+    .lang-switch {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(15,27,51,.55);
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-switch a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .lang-switch a:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .lang-switch a.active {
+      color: var(--text);
+      border-color: rgba(59,130,246,.55);
+      background: rgba(59,130,246,.18);
+    }
+
+    .lang-switch .sep {
+      color: rgba(255,255,255,.35);
+      font-size: 12px;
+    }
+
+    /* ===== Layout ===== */
+    .wrap {
+      width: min(920px, 100%);
+      display: grid;
       grid-template-columns: 1.2fr .8fr;
-      gap:18px;
+      gap: 18px;
     }
-    @media (max-width: 860px){
-      .wrap{grid-template-columns:1fr}
+
+    @media (max-width: 860px) {
+      .wrap {
+        grid-template-columns: 1fr;
+      }
     }
-    .card{
+
+    .card {
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
       backdrop-filter: blur(6px);
     }
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      margin-bottom:14px;
-    }
-   .logo{
-  width:140px;
-  height:140px;
-  border-radius:22px;
-  background:#ffffff;
-  border:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  padding:14px;
-}
-    .logo img{width:100%; height:100%; object-fit:contain}
-    h1{
-      margin:0;
-      font-size:22px;
-      letter-spacing:.2px;
-      line-height:1.2;
-    }
-    .subtitle{
-      margin-top:6px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.45;
-    }
-    .pillrow{
-      margin-top:14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .pill{
-      font-size:12px;
-      color:var(--text);
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      padding:7px 10px;
-      border-radius:999px;
-      white-space:nowrap;
-    }
-    .hr{height:1px; background:var(--line); margin:16px 0}
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-    a.btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid var(--line);
-      color:var(--text);
-      background:rgba(255,255,255,.03);
-      font-size:13px;
-    }
-    a.btn.primary{
-      border-color:rgba(59,130,246,.55);
-      background:rgba(59,130,246,.18);
-    }
-    .small{
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.5;
-    }
-    .kpi{
-      display:grid;
-      gap:10px;
-    }
-    .k{
-      padding:12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-    }
-    .k .t{font-size:12px; color:var(--muted)}
-    .k .v{margin-top:6px; font-size:14px; font-weight:600}
-    .footer{
-      margin-top:10px;
-      font-size:11px;
-      color:rgba(255,255,255,.55);
-    }
-.brand-banner{
-  grid-column: 1 / -1;          /* prend toute la largeur (2 colonnes) */
-  background:#ffffff;
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:28px 24px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: 0 12px 40px rgba(0,0,0,.18);
-}
 
-.brand-banner img{
-  max-width:480px;              /* TAILLE DU LOGO */
-  width:100%;
-  height:auto;
-}
-.brand-banner{
-  margin-bottom: 6px;
-}
-.brand-inner{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
+    /* ===== Brand banner ===== */
+    .brand-banner {
+      grid-column: 1 / -1;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+      margin-bottom: 6px;
+    }
 
-.brand-tagline{
-  margin-top:12px;
-  font-size:15px;
-  color:#475569;
-  letter-spacing:.2px;
-  text-align:center;
-}
+    .brand-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    .brand-banner img {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+    }
 
-@media (max-width: 860px){
-  .brand-banner img{
-    max-width:280px;
-  }
-}
+    .brand-tagline {
+      margin-top: 12px;
+      font-size: 15px;
+      color: #475569;
+      letter-spacing: .2px;
+      text-align: center;
+    }
 
+    @media (max-width: 860px) {
+      .brand-banner img {
+        max-width: 280px;
+      }
+    }
+
+    /* ===== Typography ===== */
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: .2px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .pillrow {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 12px;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 7px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .hr {
+      height: 1px;
+      background: var(--line);
+      margin: 16px 0;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      font-size: 13px;
+    }
+
+    a.btn.primary {
+      border-color: rgba(59,130,246,.55);
+      background: rgba(59,130,246,.18);
+    }
+
+    /* ===== Side content ===== */
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .kpi {
+      display: grid;
+      gap: 10px;
+    }
+
+    .k {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .k .t {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .k .v {
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: rgba(255,255,255,.55);
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Language switch -->
+  <nav class="lang-switch" aria-label="Language switch">
+    <a href="./index.html" lang="fr">FR</a>
+    <span class="sep">|</span>
+    <a href="./index-en.html" class="active" lang="en">EN</a>
+  </nav>
+
   <main class="wrap">
-<!-- Bandeau marque -->
-<section class="brand-banner">
-  <div class="brand-inner">
-    <img src="https://stclr365appbec001.blob.core.windows.net/public/logo_w.png"
-         alt="CLEAR365">
-    <p class="brand-tagline">
-      Audit • Sécurisation • Productivité Microsoft 365
-    </p>
-  </div>
-</section>
-    <!-- Bloc principal -->
-    <section class="card">
-        <div>
-          <h1>CLEAR365 — Site en construction</h1>
-          <div class="subtitle">
-            Audit, sécurisation et productivité Microsoft 365 pour PME.<br>
-            Nous préparons une plateforme claire et actionnable. En attendant, contactez-nous directement.
-        </div>
-      </div>
 
-      <div class="pillrow">
-        <div class="pill">Microsoft 365</div>
-        <div class="pill">Sécurité des identités & accès</div>
-        <div class="pill">Intune</div>
-        <div class="pill">Audit & recommandations</div>
-      </div>
-
-      <div class="hr"></div>
-
-      <div class="small">
-        <strong>Prise de contact rapide :</strong> vous décrivez votre besoin, je vous réponds avec un premier cadrage
-        (risques, quick wins, prochaine étape).
-      </div>
-
-      <div class="cta">
-        <a class="btn primary" href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Audit%20Microsoft%20365">Envoyer un e-mail</a>
-        <a class="btn" href="tel:+32470069790">Appeler : +32 470 069 790</a>
-      </div>
-
-      <div class="footer">
-        © <span id="y"></span> CLEAR365 — Namur, Belgique
+    <!-- Brand banner -->
+    <section class="brand-banner">
+      <div class="brand-inner">
+        <img
+          src="https://stclr365appbec001.blob.core.windows.net/public/logo_w.png"
+          alt="CLEAR365"
+        />
+        <p class="brand-tagline">
+          Audit • Security • Microsoft 365 Productivity
+        </p>
       </div>
     </section>
 
-    <!-- Bloc latéral -->
+    <!-- Main card -->
+    <section class="card">
+      <h1>CLEAR365 — Website under construction</h1>
+
+      <p class="subtitle">
+        Microsoft 365 audit, security and productivity services for SMEs.<br />
+        We are building a clear and actionable platform.
+        In the meantime, feel free to contact us directly.
+      </p>
+
+      <div class="pillrow">
+        <span class="pill">Microsoft 365</span>
+        <span class="pill">Identity &amp; Access Security</span>
+        <span class="pill">Intune</span>
+        <span class="pill">Audit &amp; Recommendations</span>
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="small">
+        <strong>Quick contact:</strong>
+        you describe your needs and I will get back to you with an initial assessment
+        (risks, quick wins, next steps).
+      </p>
+
+      <div class="cta">
+        <a
+          class="btn primary"
+          href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Microsoft%20365%20Audit"
+        >
+          Send an email
+        </a>
+        <a class="btn" href="tel:+32470069790">
+          Call: +32 470 069 790
+        </a>
+      </div>
+
+      <div class="footer">
+        © <span id="y"></span> CLEAR365 — Namur, Belgium
+      </div>
+    </section>
+
+    <!-- Side card -->
     <aside class="card">
       <div class="kpi">
         <div class="k">
-          <div class="t">Positionnement</div>
-          <div class="v">Consultant Microsoft 365 & Sécurité Cloud</div>
+          <div class="t">Positioning</div>
+          <div class="v">Microsoft 365 &amp; Cloud Security Consultant</div>
         </div>
+
         <div class="k">
-          <div class="t">Ce que vous obtenez</div>
-          <div class="v">Diagnostic + plan d’actions priorisé (quick wins & risques)</div>
+          <div class="t">What you get</div>
+          <div class="v">
+            Assessment + prioritized action plan (quick wins &amp; risks)
+          </div>
         </div>
+
         <div class="k">
-          <div class="t">Zone</div>
-          <div class="v">Belgique — Wallonie, Bruxelles et Luxembourg + Remote</div>
+          <div class="t">Coverage</div>
+          <div class="v">
+            Belgium — Wallonia, Brussels &amp; Luxembourg + Remote
+          </div>
         </div>
       </div>
 
       <div class="hr"></div>
 
-      <div class="small">
-        <strong>Prochainement :</strong><br>
-        • Page services (Audit, Sécurisation, Productivité)<br>
-        • Packs PME (démarrage rapide)<br>
-        • Réservation de créneaux & checklists
-      </div>
+      <p class="small">
+        <strong>Coming soon:</strong><br />
+        • Services pages (Audit, Security, Productivity)<br />
+        • SME starter packages<br />
+        • Booking slots &amp; checklists
+      </p>
     </aside>
+
   </main>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
