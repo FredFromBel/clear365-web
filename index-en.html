@@ -17,9 +17,7 @@
       --accent: #3b82f6;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -31,61 +29,56 @@
       color: var(--text);
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 24px;
     }
 
- /* ===== Language switch (flags – premium) ===== */
-.lang-switch {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 50;
-  display: flex;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(15,27,51,.65);
-  backdrop-filter: blur(10px);
-}
+    /* ===== Language switch ===== */
+    .lang-switch {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 50;
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(15,27,51,.65);
+      backdrop-filter: blur(10px);
+    }
 
-.lang-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 12px;
-  color: var(--muted);
-  border: 1px solid transparent;
-  transition: all .15s ease;
-  white-space: nowrap;
-}
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all .15s ease;
+      white-space: nowrap;
+    }
 
-.lang-btn .flag {
-  font-size: 16px;
-  line-height: 1;
-}
+    .lang-btn .flag {
+      font-size: 16px;
+      line-height: 1;
+    }
 
-.lang-btn .text {
-  font-size: 12px;
-  letter-spacing: .2px;
-}
+    .lang-btn:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
 
-.lang-btn:hover {
-  color: var(--text);
-  background: rgba(255,255,255,.06);
-}
+    .lang-btn.active {
+      color: var(--text);
+      border-color: rgba(59,130,246,.6);
+      background: rgba(59,130,246,.25);
+    }
 
-.lang-btn.active {
-  color: var(--text);
-  border-color: rgba(59,130,246,.6);
-  background: rgba(59,130,246,.25);
-  box-shadow: 0 0 0 1px rgba(59,130,246,.25) inset;
-}
     /* ===== Layout ===== */
     .wrap {
       width: min(920px, 100%);
@@ -95,9 +88,7 @@
     }
 
     @media (max-width: 860px) {
-      .wrap {
-        grid-template-columns: 1fr;
-      }
+      .wrap { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -116,7 +107,6 @@
       border-radius: 20px;
       padding: 28px 24px;
       display: flex;
-      align-items: center;
       justify-content: center;
       box-shadow: 0 12px 40px rgba(0,0,0,.18);
       margin-bottom: 6px;
@@ -129,7 +119,7 @@
     }
 
     .brand-banner img {
-      max-width: 480px;
+      max-width: 460px;
       width: 100%;
       height: auto;
     }
@@ -142,62 +132,48 @@
       text-align: center;
     }
 
-    @media (max-width: 860px) {
-      .brand-banner img {
-        max-width: 280px;
-      }
-    }
-/* ===== Certifications (discreet) ===== */
-.certifications {
-  display: flex;
-  gap: 10px;
-  margin: 12px 0 6px;
-  align-items: center;
-}
-
-.certifications img {
-  height: 46px;
-  width: auto;
-  opacity: 0.85;
-  filter: grayscale(10%);
-  transition: opacity .2s ease, filter .2s ease;
-}
-
-.certifications img:hover {
-  opacity: 1;
-  filter: none;
-}
-
     /* ===== Typography ===== */
     h1 {
       margin: 0;
       font-size: 22px;
-      letter-spacing: .2px;
       line-height: 1.2;
+      letter-spacing: .2px;
     }
 
     .subtitle {
       margin-top: 6px;
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
       line-height: 1.45;
     }
 
+    /* ===== Pills (equal width, aligned) ===== */
     .pillrow {
       margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .pillrow { grid-template-columns: 1fr; }
     }
 
     .pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       font-size: 12px;
-      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
-      padding: 7px 10px;
-      border-radius: 999px;
+      color: var(--text);
+      min-height: 34px;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .hr {
@@ -206,39 +182,65 @@
       margin: 16px 0;
     }
 
-    /* ===== CTA ===== */
+    /* ===== CTA (equal width, aligned) ===== */
     .cta {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      flex-wrap: wrap;
       margin-top: 14px;
     }
 
-    a.btn {
+    @media (max-width: 520px) {
+      .cta { grid-template-columns: 1fr; }
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
       padding: 10px 12px;
       border-radius: 10px;
       border: 1px solid var(--line);
-      color: var(--text);
       background: rgba(255,255,255,.03);
+      color: var(--text);
+      text-decoration: none;
       font-size: 13px;
+      min-height: 38px;
+      width: 100%;
     }
 
-    a.btn.primary {
+    .btn.primary {
       border-color: rgba(59,130,246,.55);
       background: rgba(59,130,246,.18);
     }
 
-    /* ===== Side content ===== */
+    /* ===== Left card structure (footer pinned to bottom) ===== */
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .card-main .spacer {
+      flex: 1;
+    }
+
     .small {
       font-size: 12px;
       color: var(--muted);
       line-height: 1.5;
+      margin: 0;
     }
 
+    .footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: 11px;
+      color: rgba(255,255,255,.55);
+    }
+
+    /* ===== Side content ===== */
     .kpi {
       display: grid;
       gap: 10px;
@@ -262,26 +264,49 @@
       font-weight: 600;
     }
 
-    .footer {
+    /* ===== Certifications (symmetric + centered) ===== */
+    .certifications {
       margin-top: 10px;
-      font-size: 11px;
-      color: rgba(255,255,255,.55);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .certifications img {
+      height: 62px;
+      width: auto;
+      opacity: 0.9;
+      filter: grayscale(5%);
+      transition: opacity .2s ease, filter .2s ease;
+    }
+
+    .certifications img:hover {
+      opacity: 1;
+      filter: none;
+    }
+
+    @media (max-width: 860px) {
+      .brand-banner img { max-width: 280px; }
     }
   </style>
 </head>
+
 <body>
+
   <!-- Language switch -->
   <nav class="lang-switch" aria-label="Language selector">
-  <a href="./index.html" class="lang-btn" lang="fr">
-    <span class="flag">🇫🇷</span>
-    <span class="text">Français</span>
-  </a>
-  <a href="./index-en.html" class="lang-btn active" lang="en">
-    <span class="flag">🇬🇧</span>
-    <span class="text">English</span>
-  </a>
-</nav>
+    <a href="./index.html" class="lang-btn" lang="fr">
+      <span class="flag">🇫🇷</span> Français
+    </a>
+    <a href="./index-en.html" class="lang-btn active" lang="en">
+      <span class="flag">🇬🇧</span> English
+    </a>
+  </nav>
+
   <main class="wrap">
+
     <!-- Brand banner -->
     <section class="brand-banner">
       <div class="brand-inner">
@@ -294,66 +319,80 @@
         </p>
       </div>
     </section>
-    <!-- Main card -->
-    <section class="card">
-      <h1>CLEAR365 — Website under construction</h1>
-      <p class="subtitle">
-        Microsoft 365 audit, security and productivity services for SMEs.<br />
-        We are building a clear and actionable platform.
-        In the meantime, feel free to contact us directly.
-      </p>
-      <div class="pillrow">
-        <span class="pill">Microsoft 365</span>
-        <span class="pill">Identity &amp; Access Security</span>
-        <span class="pill">Intune</span>
-        <span class="pill">Audit &amp; Recommendations</span>
+
+    <!-- Main content -->
+    <section class="card card-main">
+
+      <div>
+        <h1>CLEAR365 — Website under construction</h1>
+
+        <p class="subtitle">
+          Microsoft 365 audit, security and productivity services for SMEs.<br />
+          We are building a clear, structured and actionable platform.
+          In the meantime, feel free to contact us directly.
+        </p>
+
+        <div class="pillrow" aria-label="Service areas">
+          <span class="pill">Microsoft 365</span>
+          <span class="pill">Identity &amp; Access Security</span>
+          <span class="pill">Intune</span>
+          <span class="pill">Audit &amp; Recommendations</span>
+        </div>
+
+        <div class="hr"></div>
+
+        <p class="small">
+          <strong>First contact:</strong>
+          you describe your needs and I will get back to you with an initial assessment
+          (risks, quick wins, next steps).
+        </p>
+
+        <div class="cta" aria-label="Contact actions">
+          <a
+            class="btn primary"
+            href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Microsoft%20365%20Audit"
+          >
+            Send an email
+          </a>
+          <a class="btn" href="tel:+32470069790">
+            Call: +32 470 069 790
+          </a>
+        </div>
       </div>
-      <div class="hr"></div>
-      <p class="small">
-        <strong>Quick contact:</strong>
-        you describe your needs and I will get back to you with an initial assessment
-        (risks, quick wins, next steps).
-      </p>
-      <div class="cta">
-        <a
-          class="btn primary"
-          href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Microsoft%20365%20Audit"
-        >
-          Send an email
-        </a>
-        <a class="btn" href="tel:+32470069790">
-          Call: +32 470 069 790
-        </a>
-      </div>
+
+      <div class="spacer"></div>
 
       <div class="footer">
         © <span id="y"></span> CLEAR365 — Namur, Belgium
       </div>
     </section>
 
-    <!-- Side card -->
+    <!-- Side content -->
     <aside class="card">
       <div class="kpi">
+
         <div class="k">
           <div class="t">Positioning</div>
           <div class="v">Microsoft 365 &amp; Cloud Security Consultant</div>
+
+          <div class="certifications" aria-label="Microsoft certifications">
+            <img
+              src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-certified-azure-administrator-associate.png"
+              alt="Microsoft Certified Azure Administrator Associate"
+              loading="lazy"
+            />
+            <img
+              src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-365-certified-administrator-expert.png"
+              alt="Microsoft 365 Certified Enterprise Administrator Expert"
+              loading="lazy"
+            />
+          </div>
         </div>
-<div class="certifications">
-  <img
-    src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-certified-azure-administrator-associate.png"
-    alt="Microsoft Certified Azure Administrator Associate"
-    loading="lazy"
-  />
-  <img
-    src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-365-certified-administrator-expert.png"
-    alt="Microsoft 365 Certified Enterprise Administrator Expert"
-    loading="lazy"
-  />
-</div>
+
         <div class="k">
           <div class="t">What you get</div>
           <div class="v">
-            Assessment + prioritized action plan (quick wins &amp; risks)
+            Assessment + prioritised action plan (quick wins &amp; risks)
           </div>
         </div>
 
@@ -363,6 +402,7 @@
             Belgium — Wallonia, Brussels &amp; Luxembourg + Remote
           </div>
         </div>
+
       </div>
 
       <div class="hr"></div>
