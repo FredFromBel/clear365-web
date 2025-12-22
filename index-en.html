@@ -36,48 +36,50 @@
       padding: 24px;
     }
 
-    /* ===== Language switch ===== */
-    .lang-switch {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 20;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(15,27,51,.55);
-      backdrop-filter: blur(8px);
-    }
+   /* ===== Language switch with flags ===== */
+.lang-switch {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(15,27,51,.55);
+  backdrop-filter: blur(8px);
+}
 
-    .lang-switch a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: all .15s ease;
+}
 
-    .lang-switch a:hover {
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.03);
-    }
+.lang-btn .flag {
+  font-size: 14px;
+  line-height: 1;
+}
 
-    .lang-switch a.active {
-      color: var(--text);
-      border-color: rgba(59,130,246,.55);
-      background: rgba(59,130,246,.18);
-    }
+.lang-btn:hover {
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(255,255,255,.05);
+}
 
-    .lang-switch .sep {
-      color: rgba(255,255,255,.35);
-      font-size: 12px;
-    }
-
+.lang-btn.active {
+  color: var(--text);
+  border-color: rgba(59,130,246,.55);
+  background: rgba(59,130,246,.20);
+}
     /* ===== Layout ===== */
     .wrap {
       width: min(920px, 100%);
@@ -245,12 +247,17 @@
 <body>
 
   <!-- Language switch -->
-  <nav class="lang-switch" aria-label="Language switch">
-    <a href="./index.html" lang="fr">FR</a>
-    <span class="sep">|</span>
-    <a href="./index-en.html" class="active" lang="en">EN</a>
-  </nav>
+  <nav class="lang-switch" aria-label="Language selector">
+  <a href="./index-en.html" class="lang-btn active" lang="en">
+    <span class="flag">🇬🇧</span>
+    <span class="label">EN</span>    
+  </a>
 
+  <a href="./index.html" class="lang-btn" lang="fr">
+   <span class="flag">🇫🇷</span>
+    <span class="label">FR</span>
+  </a>
+</nav>
   <main class="wrap">
 
     <!-- Brand banner -->
