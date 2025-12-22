@@ -147,21 +147,33 @@
       line-height: 1.45;
     }
 
+    /* ===== Pills (equal width, aligned) ===== */
     .pillrow {
       margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .pillrow { grid-template-columns: 1fr; }
     }
 
     .pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       font-size: 12px;
-      padding: 7px 10px;
+      padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
       color: var(--text);
+      min-height: 34px;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .hr {
@@ -170,12 +182,16 @@
       margin: 16px 0;
     }
 
-    /* ===== CTA ===== */
+    /* ===== CTA (equal width, aligned) ===== */
     .cta {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      flex-wrap: wrap;
       margin-top: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .cta { grid-template-columns: 1fr; }
     }
 
     .btn {
@@ -189,6 +205,8 @@
       color: var(--text);
       text-decoration: none;
       font-size: 13px;
+      min-height: 38px;
+      width: 100%;
     }
 
     .btn.primary {
@@ -196,13 +214,33 @@
       background: rgba(59,130,246,.18);
     }
 
-    /* ===== Side content ===== */
+    /* ===== Left card structure (footer pinned to bottom) ===== */
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .card-main .spacer {
+      flex: 1;
+    }
+
     .small {
       font-size: 12px;
       color: var(--muted);
       line-height: 1.5;
+      margin: 0;
     }
 
+    .footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: 11px;
+      color: rgba(255,255,255,.55);
+    }
+
+    /* ===== Side content ===== */
     .kpi {
       display: grid;
       gap: 10px;
@@ -226,16 +264,18 @@
       font-weight: 600;
     }
 
-    /* ===== Certifications (integrated, non disruptive) ===== */
+    /* ===== Certifications (symmetric + centered) ===== */
     .certifications {
-      display: flex;
-      gap: 14px;
       margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       align-items: center;
+      justify-items: center;
     }
 
     .certifications img {
-      height: 60px;
+      height: 62px;
       width: auto;
       opacity: 0.9;
       filter: grayscale(5%);
@@ -247,10 +287,8 @@
       filter: none;
     }
 
-    .footer {
-      margin-top: 10px;
-      font-size: 11px;
-      color: rgba(255,255,255,.55);
+    @media (max-width: 860px) {
+      .brand-banner img { max-width: 280px; }
     }
   </style>
 </head>
@@ -261,115 +299,4 @@
   <nav class="lang-switch" aria-label="Sélecteur de langue">
     <a href="./index.html" class="lang-btn active" lang="fr">
       <span class="flag">🇫🇷</span> Français
-    </a>
-    <a href="./index-en.html" class="lang-btn" lang="en">
-      <span class="flag">🇬🇧</span> English
-    </a>
-  </nav>
-
-  <main class="wrap">
-
-    <!-- Brand banner -->
-    <section class="brand-banner">
-      <div class="brand-inner">
-        <img src="https://stclr365appbec001.blob.core.windows.net/public/logo_w.png" alt="CLEAR365" />
-        <p class="brand-tagline">
-          Audit • Sécurisation • Productivité Microsoft 365
-        </p>
-      </div>
-    </section>
-
-    <!-- Main content -->
-    <section class="card">
-      <h1>CLEAR365 — Site en construction</h1>
-
-      <p class="subtitle">
-        Audit, sécurisation et productivité Microsoft 365 pour PME.<br />
-        Nous préparons une plateforme claire, structurée et actionnable.
-        En attendant, contactez-nous directement.
-      </p>
-
-      <div class="pillrow">
-        <span class="pill">Microsoft 365</span>
-        <span class="pill">Sécurité des identités & accès</span>
-        <span class="pill">Intune</span>
-        <span class="pill">Audit & recommandations</span>
-      </div>
-
-      <div class="hr"></div>
-
-      <p class="small">
-        <strong>Premier contact :</strong>
-        vous décrivez votre besoin et je vous réponds avec un premier cadrage
-        (risques, quick wins, prochaines étapes).
-      </p>
-
-      <div class="cta">
-        <a class="btn primary"
-           href="mailto:frederic@clear365.be?subject=Contact%20CLEAR365%20-%20Audit%20Microsoft%20365">
-          Envoyer un e-mail
-        </a>
-        <a class="btn" href="tel:+32470069790">
-          Appeler : +32 470 069 790
-        </a>
-      </div>
-
-      <div class="footer">
-        © <span id="y"></span> CLEAR365 — Namur, Belgique
-      </div>
-    </section>
-
-    <!-- Side content -->
-    <aside class="card">
-      <div class="kpi">
-
-        <div class="k">
-          <div class="t">Positionnement</div>
-          <div class="v">Consultant Microsoft 365 & Sécurité Cloud</div>
-
-          <div class="certifications">
-            <img
-              src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-certified-azure-administrator-associate.png"
-              alt="Microsoft Certified Azure Administrator Associate"
-            />
-            <img
-              src="https://stclr365appbec001.blob.core.windows.net/public/microsoft-365-certified-administrator-expert.png"
-              alt="Microsoft 365 Certified Administrator Expert"
-            />
-          </div>
-        </div>
-
-        <div class="k">
-          <div class="t">Ce que vous obtenez</div>
-          <div class="v">
-            Diagnostic + plan d’actions priorisé (quick wins & risques)
-          </div>
-        </div>
-
-        <div class="k">
-          <div class="t">Zone</div>
-          <div class="v">
-            Belgique — Wallonie, Bruxelles et Luxembourg + Remote
-          </div>
-        </div>
-
-      </div>
-
-      <div class="hr"></div>
-
-      <p class="small">
-        <strong>Prochainement :</strong><br />
-        • Pages services (Audit, Sécurisation, Productivité)<br />
-        • Packs PME<br />
-        • Réservation de créneaux & checklists
-      </p>
-    </aside>
-
-  </main>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-
-</body>
-</html>
+    </
