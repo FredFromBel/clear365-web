@@ -288,3 +288,21 @@ h1 {
     max-width: 280px;
   }
 }
+
+.lang-switch {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+}
+
+
+@media (max-width: 768px) {
+  .lang-switch {
+    position: static;
+    margin: 12px auto 0 auto;
+    justify-content: center;
+  }
+}
