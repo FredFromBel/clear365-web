@@ -10,6 +10,7 @@
   --danger:#ff6b6b;
   --ok:#7dffb2;
 }
+body { border: 5px solid lime !important; }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
@@ -109,3 +110,4 @@ label{color:var(--muted);font-size:13px}
   .card{grid-column:span 12}
   .checkgrid{grid-template-columns:1fr}
 }
+
