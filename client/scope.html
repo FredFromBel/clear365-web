@@ -1,0 +1,136 @@
+<!-- /client/scope.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scopes d’optimisation | CLEAR365</title>
+  <link rel="stylesheet" href="/client/client.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">CLEAR365</a>
+    <nav class="topnav">
+      <a href="/client/index.html">Portail</a>
+      <a href="/client/audit.html">Audit</a>
+      <a class="active" href="/client/scope.html">Scopes</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Scopes d’optimisation</h1>
+      <p class="sub">Après l’audit (lecture seule), vous pouvez valider des axes d’optimisation. Toute remédiation est explicitement scoppée.</p>
+      <div class="note">
+        <strong>Règle :</strong> pas de changement sans scope validé + élévation temporaire des droits si nécessaire.
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>1) Référence dossier</h2>
+      <div class="formRow">
+        <label for="scopeCaseRef">Référence dossier</label>
+        <input id="scopeCaseRef" type="text" placeholder="Ex : C365-2025-0012" />
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="btnSaveScopeCaseRef">Enregistrer</button>
+      </div>
+      <p class="mini" id="scopeCaseStatus" aria-live="polite"></p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>🔐 Sécurité</h2>
+        <p>Réduction du risque : identité, accès, MFA, posture, recommandations.</p>
+        <ul class="bullets">
+          <li>Conditional Access (design/tuning)</li>
+          <li>PIM / comptes admins / break-glass</li>
+          <li>Identity Protection / Secure Score</li>
+        </ul>
+        <div class="checkline">
+          <input id="sc_security" type="checkbox" />
+          <label for="sc_security"><strong>Inclure ce scope</strong></label>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>💰 Finance & licences</h2>
+        <p>Optimisation des coûts et alignement licences/usage.</p>
+        <ul class="bullets">
+          <li>Sur/sous-licensing</li>
+          <li>Comptes inactifs / rationalisation</li>
+          <li>Recommandations de packaging</li>
+        </ul>
+        <div class="checkline">
+          <input id="sc_finance" type="checkbox" />
+          <label for="sc_finance"><strong>Inclure ce scope</strong></label>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>⚙️ Optimisation opérationnelle</h2>
+        <p>Standardisation et efficacité : onboarding, groupes, postes, pratiques.</p>
+        <ul class="bullets">
+          <li>Groupes (dynamiques/roles)</li>
+          <li>Onboarding / offboarding</li>
+          <li>Intune baseline (si applicable)</li>
+        </ul>
+        <div class="checkline">
+          <input id="sc_ops" type="checkbox" />
+          <label for="sc_ops"><strong>Inclure ce scope</strong></label>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>📊 Gouvernance & conformité</h2>
+        <p>Traçabilité et maîtrise : labels, DLP, politiques, reporting.</p>
+        <ul class="bullets">
+          <li>Sensitivity labels</li>
+          <li>DLP (analyse / implémentation)</li>
+          <li>Gouvernance & reporting</li>
+        </ul>
+        <div class="checkline">
+          <input id="sc_gov" type="checkbox" />
+          <label for="sc_gov"><strong>Inclure ce scope</strong></label>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>2) Consentement</h2>
+      <div class="checkline">
+        <input id="consent_readonly" type="checkbox" />
+        <label for="consent_readonly">J’autorise CLEAR365 à réaliser un <strong>audit en lecture seule</strong> (Global Reader).</label>
+      </div>
+      <div class="checkline">
+        <input id="consent_scoped" type="checkbox" />
+        <label for="consent_scoped">Je comprends que toute remédiation sera effectuée <strong>uniquement</strong> sur scope validé.</label>
+      </div>
+
+      <div class="formRow">
+        <label for="scopeNotes">Notes / contraintes</label>
+        <textarea id="scopeNotes" rows="4" placeholder="Ex : contraintes horaires, applications critiques, exigence de validation, périmètre…"></textarea>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="btnSaveScopes">Enregistrer</button>
+        <button class="btn" id="btnDownloadSummary">Télécharger le résumé (JSON)</button>
+        <a class="btn" id="btnDeposit3" href="#" rel="noopener">Déposer le résumé</a>
+      </div>
+
+      <p class="mini" id="scopeSaveStatus" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="y"></span> CLEAR365</span>
+      <span class="sep">•</span>
+      <a href="/client/index.html">Portail client</a>
+    </div>
+  </footer>
+
+  <script src="/client/client.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

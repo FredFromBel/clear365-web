@@ -1,0 +1,115 @@
+<!-- /client/audit.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checklist audit | CLEAR365</title>
+  <link rel="stylesheet" href="/client/client.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">CLEAR365</a>
+    <nav class="topnav">
+      <a href="/client/index.html">Portail</a>
+      <a class="active" href="/client/audit.html">Audit</a>
+      <a href="/client/scope.html">Scopes</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Checklist audit (lecture seule)</h1>
+      <p class="sub">Objectif : permettre à CLEAR365 d’observer et d’évaluer, sans aucun changement.</p>
+      <div class="note">
+        <strong>Rôle requis :</strong> <strong>Global Reader</strong> (lecture seule).<br />
+        <strong>Remédiation :</strong> uniquement après validation d’un scope d’optimisation.
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>1) Référence dossier</h2>
+      <p class="mini">Si vous n’en avez pas, créez-en une pour la traçabilité (recommandé).</p>
+      <div class="formRow">
+        <label for="auditCaseRef">Référence dossier</label>
+        <input id="auditCaseRef" type="text" placeholder="Ex : C365-2025-0012" />
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="btnSaveCaseRef">Enregistrer</button>
+        <button class="btn" id="btnGenerateCaseRef">Générer</button>
+      </div>
+      <p class="mini" id="auditCaseHint" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2) Accès Global Reader</h2>
+      <ol class="steps">
+        <li>
+          Dans votre tenant Microsoft 365, attribuez le rôle <strong>Global Reader</strong> au compte CLEAR365 (fourni lors du rendez-vous).
+        </li>
+        <li>
+          Si vous utilisez PIM : préférez une <strong>assignation temporaire</strong> (durée limitée) pour renforcer la gouvernance.
+        </li>
+        <li>
+          Confirmez ci-dessous une fois fait.
+        </li>
+      </ol>
+
+      <div class="checkline">
+        <input id="chkGlobalReader" type="checkbox" />
+        <label for="chkGlobalReader"><strong>Global Reader attribué</strong> (lecture seule)</label>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="btnSaveAuditAccess">Enregistrer</button>
+      </div>
+
+      <p class="mini" id="auditAccessStatus" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>3) Collecte (exports recommandés)</h2>
+      <p class="mini">Ces éléments accélèrent l’audit. Si vous ne pouvez pas tout fournir, ce n’est pas bloquant.</p>
+
+      <div class="checkgrid">
+        <div class="checkline"><input id="ex_ca" type="checkbox"><label for="ex_ca">Conditional Access (policies)</label></div>
+        <div class="checkline"><input id="ex_signins" type="checkbox"><label for="ex_signins">Sign-in logs (période définie)</label></div>
+        <div class="checkline"><input id="ex_roles" type="checkbox"><label for="ex_roles">Rôles & affectations (admins)</label></div>
+        <div class="checkline"><input id="ex_devices" type="checkbox"><label for="ex_devices">Inventaire appareils (Intune/Entra)</label></div>
+        <div class="checkline"><input id="ex_secureScore" type="checkbox"><label for="ex_secureScore">Secure Score / recommandations</label></div>
+        <div class="checkline"><input id="ex_email" type="checkbox"><label for="ex_email">Messagerie (EXO) : paramètres clés</label></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="btnSaveExports">Enregistrer</button>
+        <a class="btn" href="/client/scope.html">Choisir les scopes</a>
+      </div>
+
+      <div class="note danger">
+        <strong>Sécurité :</strong> ne transmettez jamais de mots de passe, secrets, clés, tokens.
+      </div>
+
+      <p class="mini" id="exportsStatus" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>4) Dépôt / Rendez-vous</h2>
+      <div class="actions">
+        <a class="btn primary" id="btnDeposit2" href="#" rel="noopener">Accéder au dépôt sécurisé</a>
+        <a class="btn" id="btnStartBooking2" href="#" rel="noopener">Réserver / modifier un rendez-vous</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="y"></span> CLEAR365</span>
+      <span class="sep">•</span>
+      <a href="/client/index.html">Portail client</a>
+    </div>
+  </footer>
+
+  <script src="/client/client.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!-- /client/index.html -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Accès client | CLEAR365</title>
+  <link rel="stylesheet" href="/client/client.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">CLEAR365</a>
+    <nav class="topnav">
+      <a href="/index.html">Retour site</a>
+      <a href="/client/audit.html">Audit</a>
+      <a href="/client/scope.html">Scopes</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Portail client</h1>
+      <p class="sub">
+        Démarrer un audit, suivre votre dossier, ou déposer des informations en toute sécurité.
+      </p>
+      <div class="note">
+        <strong>Important :</strong> l’audit CLEAR365 est réalisé en <strong>lecture seule</strong> (Global Reader). Aucune modification n’est effectuée sans scope validé.
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Démarrer un audit</h2>
+        <p>Réservez un créneau, puis suivez la checklist d’accès (Global Reader) et de collecte.</p>
+        <div class="actions">
+          <a class="btn primary" id="btnStartBooking" href="#" rel="noopener">Réserver un entretien</a>
+          <a class="btn" href="/client/audit.html">Checklist audit</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Suivre mon audit</h2>
+        <p>Accédez rapidement à votre référence dossier, à vos scopes sélectionnés et au résumé.</p>
+        <div class="formRow">
+          <label for="caseRef">Référence dossier</label>
+          <input id="caseRef" type="text" placeholder="Ex : C365-2025-0012" />
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="btnLoadCase">Charger</button>
+          <a class="btn" href="/client/scope.html">Scopes</a>
+        </div>
+        <p class="mini" id="caseStatus" aria-live="polite"></p>
+      </article>
+
+      <article class="card">
+        <h2>Déposer des informations</h2>
+        <p>Utilisez le dépôt sécurisé. Ne communiquez jamais de mot de passe.</p>
+        <div class="actions">
+          <a class="btn primary" id="btnDeposit" href="#" rel="noopener">Accéder au dépôt</a>
+          <a class="btn" id="btnContact" href="#" rel="noopener">Contacter CLEAR365</a>
+        </div>
+        <ul class="bullets">
+          <li>Exports et captures uniquement</li>
+          <li>Aucun secret (mots de passe, clés, tokens)</li>
+          <li>Traçabilité par référence dossier</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="footerNote">
+      <p class="mini">
+        Astuce : commencez par <a href="/client/audit.html">Checklist audit</a>, puis choisissez vos <a href="/client/scope.html">scopes d’optimisation</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="y"></span> CLEAR365</span>
+      <span class="sep">•</span>
+      <a href="/index.html">clear365.be</a>
+    </div>
+  </footer>
+
+  <script src="/client/client.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
