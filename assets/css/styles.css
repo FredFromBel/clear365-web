@@ -93,21 +93,29 @@ a{color:inherit}
 .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18);}
 .pill:focus{outline: 3px solid var(--focus); outline-offset: 2px;}
 
-/* Banner alignée sur la largeur du contenu */
 .banner{
-  display:block;
   margin: 14px 0 22px;
 }
 
-.banner-inner {
+.banner-inner{
   width: 100%;
-  max-width: var(--max); /* Utilise la même valeur que .wrap */
-  margin: 0 auto; /* Centre dans le conteneur */
   border-radius: var(--radiusXL);
-  background: var(--offwhite);
-  border: 1px solid var(--offwhiteBorder);
-  box-shadow: var(--shadowSoft);
-  padding: 14px 16px;
+  border: 1px solid var(--panelBorder);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: flex;
+  justify-content: center;   /* centre le logo */
+  align-items: center;
+}
+
+/* Logo avec fond blanc (image inchangée) */
+.banner-img{
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 16px;       /* léger arrondi, propre */
 }
 
 /* Image du logo : centrée, responsive, sans dépasser */
