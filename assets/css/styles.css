@@ -93,23 +93,29 @@ a{color:inherit}
 .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18);}
 .pill:focus{outline: 3px solid var(--focus); outline-offset: 2px;}
 
-/* Banner (image fournie) */
-.banner{display:flex; justify-content:center; margin: 14px 0 24px;}
+/* Banner alignée sur la largeur du contenu */
+.banner{
+  display:block;
+  margin: 14px 0 22px;
+}
+
 .banner-inner{
-  width: min(900px, 100%);
-  border-radius: 30px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radiusXL);
   background: var(--offwhite);
   border: 1px solid var(--offwhiteBorder);
   box-shadow: var(--shadowSoft);
   padding: 14px 16px;
 }
-.banner-img{
-  width: 100%;
-  height: auto;
-  display:block;
-  border-radius: 18px;
-}
 
+/* Image du logo : centrée, responsive, sans dépasser */
+.logo-hero{
+  display:block;
+  margin: 0 auto;
+  width: min(820px, 100%);  /* <- adapte la taille du visuel */
+  height: auto;
+}
 /* Hero */
 .hero{text-align:center; padding: 6px 6px 8px;}
 h1{
