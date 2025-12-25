@@ -94,6 +94,11 @@ a{color:inherit}
 .pill:focus{outline: 3px solid var(--focus); outline-offset: 2px;}
 
 /* Banner (image fournie) */
+.logo-hero {
+  width: 280px;
+  max-width: 80%;
+  opacity: 0.95;
+}
 .banner{display:flex; justify-content:center; margin: 14px 0 24px;}
 .banner-inner{
   width: min(900px, 100%);
