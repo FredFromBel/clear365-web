@@ -99,9 +99,10 @@ a{color:inherit}
   margin: 14px 0 22px;
 }
 
-.banner-inner{
+.banner-inner {
   width: 100%;
-  max-width: 100%;
+  max-width: var(--max); /* Utilise la même valeur que .wrap */
+  margin: 0 auto; /* Centre dans le conteneur */
   border-radius: var(--radiusXL);
   background: var(--offwhite);
   border: 1px solid var(--offwhiteBorder);
