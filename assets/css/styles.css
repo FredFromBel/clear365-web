@@ -1,255 +1,371 @@
 
-/* =========================================
-   CLEAR365 — Patch scoppé (safe)
-   Applique uniquement dans .clear365
-   ========================================= */
+/* =======================================================
+   CLEAR365 — styles.css (mappé à ton HTML)
+   Scope : .wrap (aucun effet global hors de ta page)
+   Date : 2025-12-25
+   ======================================================= */
 
-.clear365 {
-  /* Variables locales */
-  --bg-0: #0B1220;
-  --bg-1: #101826;
-  --bg-2: #161C24;
-  --text-0: #F3F4F6;
-  --text-1: #C7D2FE;
-  --text-2: #94A3B8;
+/* -------- Variables locales -------- */
+.wrap {
+  --bg-0: #0B1220;         /* fond principal */
+  --bg-1: #101826;         /* surcouche */
+  --bg-2: #161C24;         /* cartes */
+  --text-0: #F3F4F6;       /* texte principal */
+  --text-1: #C7D2FE;       /* accent secondaire */
+  --text-2: #94A3B8;       /* texte muted */
   --border-0: rgba(255,255,255,.06);
-  --border-1: rgba(255,255,255,.10);
+  --border-1: rgba(255,255,255,.12);
 
-  --accent:  #3B82F6;    /* change en #22C55E si tu préfères le vert */
-  --accent-2:#06B6D4;
-  --success: #10B981;
-  --danger:  #EF4444;
+  --accent:  #3B82F6;      /* CTA primaire (bleu) */
+  --accent-2:#06B6D4;      /* détail (tags/icônes) */
+  --success: #10B981;      /* validation / checks */
+  --danger:  #EF4444;      /* erreurs */
 
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --h1: clamp(2.4rem, 4vw, 3.0rem);
+
+  --h1: clamp(2.3rem, 4vw, 3.0rem);
   --h2: clamp(1.6rem, 2.8vw, 2.2rem);
-  --h3: clamp(1.25rem, 2.2vw, 1.6rem);
-  --body: 1rem;
+  --h3: clamp(1.2rem, 2.2vw, 1.6rem);
   --lead: 1.1rem;
 
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
+
   --shadow-sm: 0 8px 18px rgba(9,12,20,.35);
   --shadow-md: 0 16px 32px rgba(9,12,20,.45);
   --shadow-lg: 0 24px 48px rgba(9,12,20,.50);
 
   --container: 1120px;
   --gutter: 24px;
-
-  /* Fond local uniquement dans .clear365 */
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(59,130,246,.18), transparent 60%),
-    radial-gradient(900px 500px at 10% 20%, rgba(6,182,212,.12), transparent 55%),
-    var(--bg-0);
-  color: var(--text-0);
-  font-family: var(--font-sans);
 }
 
-/* Liens : scoppés */
-.clear365 a { color: var(--text-1); text-decoration: none; }
-.clear365 a:hover { color: #E5E7EB; text-decoration: underline; }
+/* -------- Fond & typo locale -------- */
+.wrap {
+  color: var(--text-0);
+  font-family: var(--font-sans);
 
-/* Conteneur scoppé */
-.clear365 .container {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(59,130,246,.14), transparent 60%),
+    radial-gradient(900px 500px at 10% 20%, rgba(6,182,212,.10), transparent 55%),
+    var(--bg-0);
+  min-height: 100vh;
+}
+
+.wrap a { color: var(--text-1); text-decoration: none; }
+.wrap a:hover { color: #E5E7EB; text-decoration: underline; }
+
+.wrap .container {
   width: min(var(--container), 100% - 2 * var(--gutter));
   margin-inline: auto;
 }
 
-/* Focus visible scoppé */
-.clear365 :focus-visible {
+/* Focus visible (accessibilité) */
+.wrap :focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent) 70%, white 30%);
   outline-offset: 3px;
   border-radius: 8px;
 }
 
-/* Header scoppé — ne remplace pas ton header global */
-.clear365 .c-header {
+/* =======================================================
+   Header (top bar)
+   ======================================================= */
+.topbar {
   position: sticky;
   top: 0;
   z-index: 50;
   backdrop-filter: saturate(160%) blur(8px);
   background: rgba(10,16,26,.60);
   box-shadow: 0 1px 0 var(--border-0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--gutter);
 }
-.clear365 .c-header .bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 0;
-}
-.clear365 .c-header .logo img { height: 42px; }
-.clear365 .c-header nav { display: flex; gap: 18px; align-items: center; }
-.clear365 .c-header .lang-switch {
-  display: inline-flex; gap: 8px; align-items: center;
-  padding: 6px 10px; border: 1px solid var(--border-0);
-  border-radius: var(--radius-sm); color: var(--text-2);
-}
-.clear365 .c-header .lang-switch .active { color: var(--text-0); font-weight: 600; }
 
-/* Hero scoppé */
-.clear365 .hero {
-  padding: 56px 0 24px;
+.brand-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-1);
+  font-weight: 700;
+}
+.brand-mini span { color: var(--text-0); }
+
+.top-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lang-switch {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-0);
+  border-radius: var(--radius-sm);
+  color: var(--text-2);
+}
+.lang-switch .active { color: var(--text-0); font-weight: 600; }
+
+.pill {
+  display: inline-flex; align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-0);
+  background: rgba(255,255,255,.04);
+  color: var(--text-0);
+}
+.pill:hover { background: rgba(255,255,255,.08); }
+
+/* =======================================================
+   Banner (logo image)
+   ======================================================= */
+.banner { padding: 18px 0 6px; }
+.banner-inner {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+  display: grid; place-items: center;
+}
+.banner-img {
+  max-width: 680px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(9,12,20,.45));
+}
+
+/* =======================================================
+   Hero
+   ======================================================= */
+.hero {
   text-align: center;
+  padding: 28px var(--gutter) 12px;
 }
-.clear365 .hero h1 {
-  font-size: var(--h1); line-height: 1.15; letter-spacing: -.2px;
-  margin: 10px 0 16px;
+.hero h1 {
+  font-size: var(--h1);
+  line-height: 1.15;
+  letter-spacing: -.2px;
+  margin: 8px 0 16px;
 }
-.clear365 .hero p {
-  font-size: var(--lead); line-height: 1.6; opacity: .88;
-  margin: 0 auto 22px; max-width: 60ch;
-}
-.clear365 .hero .cta-group {
-  display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center;
+.hero .sub {
+  font-size: var(--lead);
+  line-height: 1.6;
+  opacity: .88;
+  max-width: 60ch; /* lisibilité */
+  margin: 0 auto 18px;
 }
 
-/* Boutons scoppés */
-.clear365 .btn {
+.cta {
   --btn-bg: var(--accent);
   --btn-fg: #fff;
   display: inline-flex; align-items: center; gap: 10px;
-  padding: .9rem 1.2rem; border-radius: 14px; border: 0;
-  color: var(--btn-fg); background: var(--btn-bg);
+  padding: .9rem 1.15rem;
+  border-radius: 14px;
+  border: 0;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
   box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 40%, black 60%);
   cursor: pointer;
   transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
   font-weight: 600; letter-spacing: .2px;
 }
-.clear365 .btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
-.clear365 .btn:active { transform: translateY(0); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 45%, black 55%); }
+.cta:hover  { filter: brightness(1.05); transform: translateY(-1px); }
+.cta:active { transform: translateY(0); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 45%, black 55%); }
 
-.clear365 .btn-outline {
-  --btn-bg: transparent; --btn-fg: var(--text-0);
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, white 60%);
-  box-shadow: none; padding: .85rem 1.15rem;
-}
-.clear365 .btn-outline:hover { background: rgba(59,130,246,.12); }
-
-.clear365 .microcopy {
-  display: inline-block; margin-top: 8px; color: var(--text-1); font-size: .95rem;
-}
-
-/* Grille scoppée */
-.clear365 .grid-3 {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 18px; margin: 32px 0 8px;
+/* =======================================================
+   Méthode (3 items)
+   ======================================================= */
+.method {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin: 14px auto 8px;
 }
 
-/* Cartes scoppées */
-.clear365 .card {
+.m-item {
   background: linear-gradient(180deg, rgba(22,28,36,.85), rgba(16,22,30,.88));
   border: 1px solid var(--border-0);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  padding: 14px;
+  text-align: center;
 }
-.clear365 .card .header {
-  display: flex; align-items: center; gap: 10px;
-  padding-bottom: 10px; border-bottom: 1px solid var(--border-0);
+.m-icon {
+  width: 28px; height: 28px;
+  stroke: var(--accent-2); stroke-width: 2;
+  fill: none;
+  margin: 4px auto 8px;
 }
-.clear365 .card h3 {
-  font-size: var(--h3); line-height: 1.25; margin: 0; color: var(--text-0);
-}
-.clear365 .card .desc {
-  color: var(--text-2); font-size: .98rem; line-height: 1.55; margin-top: 8px;
+.m-title { font-size: 1.05rem; font-weight: 700; }
+.m-desc  { color: var(--text-2); font-size: .95rem; }
+
+/* =======================================================
+   Grille principale (pré-audit + consultant)
+   ======================================================= */
+.grid {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1.25fr .85fr;
+  gap: 18px;
+  margin: 20px 0 24px;
 }
 
-/* Pré‑audit scoppé */
-.clear365 .preaudit {
-  display: grid; grid-template-columns: 1.25fr .85fr;
-  gap: 18px; margin: 26px 0 28px;
-}
-.clear365 .preaudit .panel {
-  background: linear-gradient(180deg, rgba(26,32,40,.85), rgba(18,24,32,.90));
+/* ---- Carte Pré-audit ---- */
+.card.preaudit {
+  background: linear-gradient(180deg, rgba(26,32,40,.85), rgba(18,24,32,.92));
   border: 1px solid var(--border-1);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 20px 18px;
+  padding: 18px;
 }
-.clear365 .preaudit .panel h2 { font-size: var(--h2); margin: 4px 0 12px; }
-.clear365 .preaudit .steps { display: grid; gap: 10px; margin: 12px 0 14px; }
-.clear365 .preaudit .step {
-  display: grid; grid-template-columns: 28px 1fr; align-items: start;
-  gap: 10px; padding: 10px 12px; border-radius: var(--radius-md);
-  background: rgba(255,255,255,.03); border: 1px solid var(--border-0);
-}
-.clear365 .preaudit .step::before {
-  content: "✓"; display: inline-grid; place-items: center;
-  width: 28px; height: 28px; border-radius: 999px;
-  background: color-mix(in srgb, var(--success) 35%, black 65%);
-  color: #D1FAE5; font-weight: 700;
-}
-.clear365 .preaudit .baseline {
-  display: flex; gap: 14px; align-items: center; margin-top: 10px; color: var(--text-1);
-}
-.clear365 .preaudit .baseline .item { display: inline-flex; gap: 8px; align-items: center; }
-.clear365 .preaudit .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
 
-/* Profil scoppé */
-.clear365 .profile {
+.card-head h2 {
+  font-size: var(--h2);
+  margin: 4px 0 4px;
+}
+.card-head .kicker {
+  color: var(--text-2);
+  margin: 0;
+}
+
+.deliverables-title {
+  margin: 12px 0 8px;
+  font-weight: 700;
+}
+.deliverables-list {
+  display: grid;
+  gap: 10px;
+}
+.d-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-0);
+}
+.d-num {
+  width: 28px; height: 28px;
+  border-radius: 999px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 35%, black 65%);
+  color: #E5F0FF;
+  font-weight: 700;
+}
+.d-strong { font-weight: 700; }
+.d-sub    { color: var(--text-2); }
+
+.how { margin-top: 8px; }
+.how-title { font-weight: 700; margin-bottom: 4px; }
+.how-text  { color: var(--text-2); }
+
+.reassure2 {
+  display: flex; gap: 14px; align-items: center;
+  margin: 10px 0 0;
+  color: var(--text-1);
+}
+
+.cta2 {
+  --btn-bg: var(--accent);
+  --btn-fg: #fff;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: .95rem 1.2rem;
+  border-radius: 16px;
+  border: 0;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 40%, black 60%);
+  cursor: pointer;
+  transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
+  font-weight: 600; letter-spacing: .2px;
+  margin-top: 14px;
+}
+.cta2:hover  { filter: brightness(1.05); transform: translateY(-1px); }
+.cta2:active { transform: translateY(0); box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 45%, black 55%); }
+
+.forwho {
+  color: var(--text-2);
+  font-size: .95rem;
+  margin-top: 8px;
+}
+
+/* ---- Carte Consultant ---- */
+.card.consultant {
   background: linear-gradient(180deg, rgba(22,28,36,.85), rgba(16,22,30,.90));
   border: 1px solid var(--border-1);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 18px; text-align: center;
-}
-.clear365 .profile .title { font-weight: 700; margin: 6px 0 8px; }
-
-.clear365 .badges {
-  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0;
-}
-.clear365 .tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 10px; border-radius: 999px; font-size: .9rem;
-  color: #A5F3FC; background: rgba(6,182,212,.14); border: 1px solid rgba(6,182,212,.35);
+  padding: 18px;
+  text-align: center;
 }
 
-/* Sticky CTA scoppé */
-.clear365 .sticky-cta {
-  position: fixed; left: 50%; transform: translateX(-50%);
-  bottom: 16px; z-index: 60; width: min(640px, calc(100% - 32px));
-  display: none;
+.photo {
+  display: grid; place-items: center;
+  margin: 8px 0 10px;
 }
-.clear365 .sticky-cta .btn { width: 100%; border-radius: 16px; }
+.photo img {
+  width: 160px; height: 160px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 3px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 28px rgba(9,12,20,.55);
+  background: #e5e5e5; /* garde un fond propre */
+}
 
-/* Footer scoppé */
-.clear365 .footer {
-  margin: 28px 0 40px; padding-top: 14px;
+.c-body .c-title { font-weight: 700; }
+.c-body .c-role  { margin-top: 4px; }
+.c-body .c-xp    { color: var(--text-2); margin-top: 6px; }
+
+.badges {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin: 12px 0 6px;
+}
+.badges img {
+  height: 28px; width: auto;
+  filter: drop-shadow(0 4px 12px rgba(9,12,20,.45));
+}
+
+.c-loc { color: var(--text-1); margin-top: 4px; }
+
+/* =======================================================
+   Footer
+   ======================================================= */
+.footer {
+  margin: 20px 0 34px;
+  padding-top: 14px;
   border-top: 1px solid var(--border-0);
-  color: var(--text-2); font-size: .95rem; text-align: center;
+  color: var(--text-2);
+  font-size: .95rem;
+  text-align: center;
 }
-.clear365 .footer .links {
-  display: flex; gap: 16px; justify-content: center; margin-top: 8px;
+.foot-links {
+  display: inline-flex; gap: 12px; align-items: center;
+  margin-top: 6px;
 }
+.sep { color: var(--text-2); }
 
-/* Skeleton scoppé (Bookings) */
-.clear365 .frame-skeleton {
-  background:
-    linear-gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.08) 37%, rgba(255,255,255,.04) 63%);
-  background-size: 400% 100%;
-  animation: clear365-shimmer 1.4s ease infinite;
-  border-radius: var(--radius-lg);
-  height: 520px;
-}
-@keyframes clear365-shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-/* Responsive scoppé */
-@media (max-width: 1200px) {
-  .clear365 .container { width: min(1000px, 100% - 2 * var(--gutter)); }
-}
+/* =======================================================
+   Responsive
+   ======================================================= */
 @media (max-width: 992px) {
-  .clear365 .grid-3 { grid-template-columns: 1fr 1fr; }
-  .clear365 .preaudit { grid-template-columns: 1fr; }
+  .method { grid-template-columns: 1fr 1fr; }
+  .grid   { grid-template-columns: 1fr; }
 }
+
 @media (max-width: 768px) {
-  .clear365 .container { width: min(92%, 100% - 2 * var(--gutter)); }
-  .clear365 .hero { padding-top: 40px; }
-  .clear365 .grid-3 { grid-template-columns: 1fr; }
-  .clear365 .sticky-cta { display: block; }
+  .banner { padding-top: 12px; }
+  .hero   { padding-top: 16px; }
+  .method { grid-template-columns: 1fr; }
+  .cta, .cta2 { width: 100%; justify-content: center; }
 }
+
 @media (max-width: 480px) {
-  .clear365 .hero .cta-group { gap: 10px; }
-  .clear365 .btn, .clear365 .btn-outline { padding: .85rem 1rem; }
+  .topbar { padding: 10px 16px; }
+  .banner-img { max-width: 520px; }
+  .m-item { padding: 12px; }
+  .card.preaudit, .card.consultant { padding: 16px; }
 }
+``
